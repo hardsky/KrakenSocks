@@ -1,0 +1,7 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="app_name">KrakenSocks</string>
+    <string name="action_sign_in_short">Войти</string>
+    <string name="prompt_name">Имя</string>
+    <string name="error_name_required">Введите имя</string>
+</resources>
