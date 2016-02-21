@@ -3,6 +3,7 @@ package com.hardskygames.krakensocks;
 import android.animation.Animator;
 import android.animation.AnimatorListenerAdapter;
 import android.annotation.TargetApi;
+import android.content.Intent;
 import android.os.AsyncTask;
 import android.os.Build;
 import android.os.Bundle;
@@ -11,6 +12,11 @@ import android.text.TextUtils;
 import android.view.View;
 import android.widget.EditText;
 
+import java.util.Collections;
+import java.util.List;
+
+import javax.inject.Inject;
+
 import butterknife.Bind;
 import butterknife.ButterKnife;
 import butterknife.OnClick;
@@ -18,11 +24,11 @@ import butterknife.OnClick;
 /**
  * A login screen
  */
-public class LoginActivity extends AppCompatActivity {
+public class LoginActivity extends BaseActivity {
 
+    @Inject
+    User mUser;
 
-
-    // UI references.
     @Bind(R.id.login_form)
     View mLoginFormView;
     @Bind(R.id.txtName)
@@ -40,11 +46,16 @@ public class LoginActivity extends AppCompatActivity {
         ButterKnife.bind(this);
     }
 
+    @Override
+    protected List<Object> getModules() {
+        return Collections.<Object>singletonList(new LoginActivityModule());
+    }
+
     @OnClick(R.id.name_sign_in_button)
     public void attemptLogin() {
-        if (mAuthTask != null) {
+        /*if (mAuthTask != null) {
             return;
-        }
+        }*/
 
         mTxtName.setError(null);
 
@@ -66,9 +77,16 @@ public class LoginActivity extends AppCompatActivity {
         } else {
             // Show a progress spinner, and kick off a background task to
             // perform the user login attempt.
-            showProgress(true);
+            /*showProgress(true);
             mAuthTask = new UserLoginTask(name);
-            mAuthTask.execute((Void) null);
+            mAuthTask.execute((Void) null);*/
+            mUser.setName(name);
+
+            Intent intent = new Intent();
+            intent.setClass(this, ChatActivity.class);
+            startActivity(intent);
+
+            finish();
         }
     }
 
