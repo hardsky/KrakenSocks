@@ -4,7 +4,6 @@ import android.app.Application;
 import android.os.Build;
 
 import java.util.Arrays;
-import java.util.Collection;
 import java.util.List;
 
 import dagger.ObjectGraph;

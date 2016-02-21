@@ -23,12 +23,8 @@ public class LoginActivity extends BaseActivity {
     @Inject
     User mUser;
 
-    @Bind(R.id.login_form)
-    View mLoginFormView;
     @Bind(R.id.txtName)
     EditText mTxtName;
-    @Bind(R.id.login_progress)
-    View mProgressView;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
